@@ -7,6 +7,9 @@ TagManager:
   - kazan
   - win
   - top
+  - Wall
+  - Food
+  - Obstacle
   layers:
   - Default
   - TransparentFX
