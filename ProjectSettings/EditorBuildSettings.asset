@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/kodlarr/pong.unity
     guid: a5814b346f260c4438a47227e35fed86
+  - enabled: 1
+    path: Assets/kodlarr/home2.unity
+    guid: e3d396bec63ab8c419a446bf4cdb0f36
   m_configObjects: {}
