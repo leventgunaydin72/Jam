@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/home4.unity
     guid: 5fd21e7b3deb4c941a4b8b1a30ad1de0
+  - enabled: 1
+    path: Assets/kodlarr/pause1.unity
+    guid: 1b8a8ca770356e047b66be3a1e7521ff
+  - enabled: 1
+    path: Assets/final.unity
+    guid: bcd57da03a535f54b8803e35db04b6d5
   m_configObjects: {}
