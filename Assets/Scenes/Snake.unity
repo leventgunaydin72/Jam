@@ -1343,7 +1343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1200708619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 3020344474262562633, guid: 61847045f28bc8c4da9a33ef6ecc11f8, type: 3}
   direction: {x: 1, y: 0}
-  speed: 20
+  speed: 15
   speedMultiplier: 1
   initialSize: 4
   moveThroughWalls: 0
