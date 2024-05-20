@@ -21,9 +21,14 @@ public class PongEnvController : MonoBehaviour
     [SerializeField] private int maxEnvironmentSteps = 2000;
     private int resetTimer;
 
-    public GameObject winText;
-    public GameObject loseText;
-
+    public GameObject winText,loseText,Tekrar,Bilgi;
+    public TextMeshProUGUI Sayac;
+    private int Sol,Sag;
+    private void Start() {
+       Sol = 0;
+       Sag = 0;
+       StartCoroutine(Kazanir(1f));
+    }
     public void ResolveEvent(Event triggerEvent)
     {
         switch (triggerEvent)
@@ -32,20 +37,31 @@ public class PongEnvController : MonoBehaviour
             case Event.LeftPaddleGoal:
                 leftPaddleAgent.AddReward(1f);
                 rightPaddleAgent.AddReward(-1f);
+                Sol++;
+                if(Sol == 5)
+                {
+                    SceneManager.LoadScene("Home2");
+                }
                 StartCoroutine(SwapMiddleLineColor(Color.white, 0.5f));
                 StartCoroutine(WinText(1f));
-                SceneManager.LoadScene("Home2");
                 leftPaddleAgent.EndEpisode();
                 rightPaddleAgent.EndEpisode();
                 break;
             case Event.RightPaddleGoal:
                 leftPaddleAgent.AddReward(-1f);
                 rightPaddleAgent.AddReward(1f);
+                Sag++;
+                if(Sag == 5)
+                {
+                    ResetScene();
+                    Sag = 0;
+                    Sol = 0;
+                    StartCoroutine(Tekrardene(1f));
+                }
                 StartCoroutine(SwapMiddleLineColor(Color.white, 0.5f));
                 StartCoroutine(LoseText(1f));
                 leftPaddleAgent.EndEpisode();
                 rightPaddleAgent.EndEpisode();
-                ResetScene();
                 break;
         }
     }
@@ -67,6 +83,18 @@ public class PongEnvController : MonoBehaviour
         yield return new WaitForSeconds(time);
         middleLineRenderer.color = Color.white;
     }
+    private IEnumerator Tekrardene(float time)
+    {
+        Tekrar.SetActive(true);
+        yield return new WaitForSeconds(time);
+        Tekrar.SetActive(false);
+    }
+    private IEnumerator Kazanir(float time)
+    {
+        Bilgi.SetActive(true);
+        yield return new WaitForSeconds(time);
+        Bilgi.SetActive(false);
+    }
 
     private void ResetScene()
     {
@@ -83,5 +111,8 @@ public class PongEnvController : MonoBehaviour
             rightPaddleAgent.EpisodeInterrupted();
             ResetScene();
         }
+    }
+    private void Update() {
+       Sayac.text = "Skor   "+Sol+"-"+Sag;
     }
 }
