@@ -346,6 +346,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6906392848974550922, guid: c630f490216de0b489b1c5ed77df8b9f, type: 3}
+      propertyPath: Top
+      value: 
+      objectReference: {fileID: 1650744250}
+    - target: {fileID: 6906392848974550922, guid: c630f490216de0b489b1c5ed77df8b9f, type: 3}
+      propertyPath: Win
+      value: 
+      objectReference: {fileID: 727313283}
+    - target: {fileID: 6906392848974550922, guid: c630f490216de0b489b1c5ed77df8b9f, type: 3}
       propertyPath: Bilgi
       value: 
       objectReference: {fileID: 1156844571}
@@ -480,8 +488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 847, y: 10}
-  m_SizeDelta: {x: 702, y: 50}
+  m_AnchoredPosition: {x: 347, y: 19.905}
+  m_SizeDelta: {x: 799.195, y: 79.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727313285
 MonoBehaviour:
@@ -530,8 +538,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.7
-  m_fontSizeBase: 63.7
+  m_fontSize: 80.1
+  m_fontSizeBase: 80.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1148,6 +1156,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164081039}
   m_CullTransparentMesh: 1
+--- !u!1 &1650744250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6906392848872094795, guid: c630f490216de0b489b1c5ed77df8b9f, type: 3}
+  m_PrefabInstance: {fileID: 702000592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771813522
 GameObject:
   m_ObjectHideFlags: 0

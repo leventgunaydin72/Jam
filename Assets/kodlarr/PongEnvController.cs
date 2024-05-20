@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Unity.Sentis.Layers;
 
 public enum Event
 {
@@ -21,7 +22,7 @@ public class PongEnvController : MonoBehaviour
     [SerializeField] private int maxEnvironmentSteps = 2000;
     private int resetTimer;
 
-    public GameObject winText,loseText,Tekrar,Bilgi;
+    public GameObject Win,Tekrar,Bilgi,Top;
     public TextMeshProUGUI Sayac;
     private int Sol,Sag;
     private void Start() {
@@ -40,10 +41,9 @@ public class PongEnvController : MonoBehaviour
                 Sol++;
                 if(Sol == 5)
                 {
-                    SceneManager.LoadScene("Home2");
+                    StartCoroutine(Kazandin(2f));
                 }
                 StartCoroutine(SwapMiddleLineColor(Color.white, 0.5f));
-                StartCoroutine(WinText(1f));
                 leftPaddleAgent.EndEpisode();
                 rightPaddleAgent.EndEpisode();
                 break;
@@ -59,23 +59,10 @@ public class PongEnvController : MonoBehaviour
                     StartCoroutine(Tekrardene(1f));
                 }
                 StartCoroutine(SwapMiddleLineColor(Color.white, 0.5f));
-                StartCoroutine(LoseText(1f));
                 leftPaddleAgent.EndEpisode();
                 rightPaddleAgent.EndEpisode();
                 break;
         }
-    }
-     private IEnumerator WinText(float time)
-    {
-        winText.SetActive(true);
-        yield return new WaitForSeconds(time);
-        winText.SetActive(false);
-    }
-    private IEnumerator LoseText(float time)
-    {
-        loseText.SetActive(true);
-        yield return new WaitForSeconds(time);
-        loseText.SetActive(false);
     }
     private IEnumerator SwapMiddleLineColor(Color color, float time)
     {
@@ -94,6 +81,15 @@ public class PongEnvController : MonoBehaviour
         Bilgi.SetActive(true);
         yield return new WaitForSeconds(time);
         Bilgi.SetActive(false);
+    }
+    private IEnumerator Kazandin(float time)
+    {
+        Win.SetActive(true);
+        Top.SetActive(false);
+        yield return new WaitForSeconds(time);
+        Top.SetActive(true);
+        Win.SetActive(false);
+        SceneManager.LoadScene("Home2");
     }
 
     private void ResetScene()
