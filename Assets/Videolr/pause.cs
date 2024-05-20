@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class pause : MonoBehaviour
 {
     public string pauseSceneName = "pause1"; // Pause sahnesinin adý
+    public static pause instance;
 
     void Update()
     {
@@ -29,5 +30,17 @@ public class pause : MonoBehaviour
         // "LastScene" adlý kayýttan son sahnenin numarasýný alýp bu sahneye dön
         int lastScene = PlayerPrefs.GetInt("LastScene");
         SceneManager.LoadScene(lastScene);
+    }
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

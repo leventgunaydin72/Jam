@@ -81,7 +81,7 @@ public class snake1 : MonoBehaviour
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
 
-        if (segments.Count == 15)
+        if (segments.Count == 14)
         {
             winText.text = "Kazandýnýz";
             // 0.5 saniye sonra "NextScene" adlý sahneyi yükle

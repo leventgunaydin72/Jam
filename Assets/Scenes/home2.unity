@@ -2314,6 +2314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Detective_0
       objectReference: {fileID: 0}
+    - target: {fileID: 1033048630313834844, guid: c00a60479b02e854c96d31a1ef6bc5ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2950202316310064673, guid: c00a60479b02e854c96d31a1ef6bc5ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
