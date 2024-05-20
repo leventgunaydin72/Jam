@@ -1,3 +1,6 @@
+// 2024-05-20 AI-Tag 
+// This was created with assistance from Muse, a Unity Artificial Intelligence product
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -89,7 +92,7 @@ public class snake1 : MonoBehaviour
 
         if (countdown == 0) // Geri sayým 0'a ulaþtýðýnda bir sonraki seviyeye geç
         {
-            winText.text = "Kazandýnýz";
+            winText.text = "Kazandýn";
             StartCoroutine(LoadSceneWithDelay("home3", 0.5f));
         }
     }
@@ -97,7 +100,10 @@ public class snake1 : MonoBehaviour
     private IEnumerator LoadSceneWithDelay(string sceneName, float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(sceneName);
+        if (countdown == 0) // Geri sayým 0 ise sahneyi deðiþtir
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     public void ResetState()
@@ -120,6 +126,7 @@ public class snake1 : MonoBehaviour
 
         countdown = 10; // Oyun sýfýrlandýðýnda geri sayýmý 10'a sýfýrla
         countdownText.text = countdown.ToString(); // Sýfýrlanmýþ geri sayýmý göster
+        winText.text = ""; // Oyun sýfýrlandýðýnda kazanma metnini sýfýrla
     }
 
     public bool Occupies(int x, int y)
