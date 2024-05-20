@@ -13,8 +13,10 @@ public class snake1 : MonoBehaviour
     public float speedMultiplier = 1f;
     public int initialSize = 4;
     public bool moveThroughWalls = false;
-    public Text lossText; // Metin nesnesi için referans
-    public Text winText; // Kazandýnýz mesajý için referans
+    public Text lossText;
+    public Text winText;
+    public int countdown = 10; // Geri sayým için yeni deðiþken
+    public Text countdownText; // Geri sayýmýn gösterileceði metin nesnesi için referans
 
     private List<Transform> segments = new List<Transform>();
     private Vector2Int input;
@@ -23,6 +25,7 @@ public class snake1 : MonoBehaviour
     private void Start()
     {
         ResetState();
+        countdownText.text = countdown.ToString(); // Oyun baþladýðýnda geri sayýmý göster
     }
 
     private void Update()
@@ -81,10 +84,12 @@ public class snake1 : MonoBehaviour
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
 
-        if (segments.Count == 14)
+        countdown--; // Segment her büyüdüðünde geri sayýmý 1 azalt
+        countdownText.text = countdown.ToString(); // Güncellenmiþ geri sayýmý göster
+
+        if (countdown == 0) // Geri sayým 0'a ulaþtýðýnda bir sonraki seviyeye geç
         {
             winText.text = "Kazandýnýz";
-            // 0.5 saniye sonra "NextScene" adlý sahneyi yükle
             StartCoroutine(LoadSceneWithDelay("home3", 0.5f));
         }
     }
@@ -93,8 +98,6 @@ public class snake1 : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);
-
-
     }
 
     public void ResetState()
@@ -114,6 +117,9 @@ public class snake1 : MonoBehaviour
         {
             Grow();
         }
+
+        countdown = 10; // Oyun sýfýrlandýðýnda geri sayýmý 10'a sýfýrla
+        countdownText.text = countdown.ToString(); // Sýfýrlanmýþ geri sayýmý göster
     }
 
     public bool Occupies(int x, int y)
